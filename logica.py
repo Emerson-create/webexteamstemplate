@@ -176,7 +176,7 @@ def trataPOST(content):
             salaparamandarmsg=getwebexRoomID ("Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5")
         
             # executa a logica
-            #msg,arquivo=logica(mensagem,usermail)
+            msg,arquivo=logica(mensagem,usermail)
             
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(salaparamandarmsg,msg,url,arquivo)
