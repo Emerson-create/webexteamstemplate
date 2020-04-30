@@ -1,6 +1,6 @@
 ﻿from config import *
 from funcoes import *
-from webexteams import getwebexMsg, webexmsgRoomviaID
+from webexteams import getwebexMsg, webexmsgRoomviaID, getwebexRoomID
 import json
 
 def logica(comando,usermail):
