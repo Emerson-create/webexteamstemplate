@@ -163,35 +163,35 @@ def logica(comando,usermail):
     # return msg,arquivo
 
 
-def trataPOST(content):
+#def trataPOST(content):
 
     # resposta as perguntas via webexteams
     # trata mensagem quando nao e' gerada pelo bot. Se nao e' bot, entao usuario
     try:     
-        if (content['dashboardId']):
+        #if (content['dashboardId']):
             # identifica id da mensagem
-            msg=(content['message'])
+            #msg=(content['message'])
             # identifica dados da mensagem
-            url=(content['ruleUrl'])
-            salaparamandarmsg=getwebexRoomID ("Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5")
+            #url=(content['ruleUrl'])
+            #salaparamandarmsg=getwebexRoomID ("Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5")
         
             # executa a logica
-            msg,arquivo=logica(mensagem,usermail)
+            #msg,arquivo=logica(mensagem,usermail)
             
             # Envia resposta na sala apropriada
-            webexmsgRoomviaID(salaparamandarmsg,msg,url,arquivo)
+            #webexmsgRoomviaID(salaparamandarmsg,msg,url,arquivo)
 
-        if content['name']==webhook_name and content['data']['personEmail']!=botmail:
+        #if content['name']==webhook_name and content['data']['personEmail']!=botmail:
             # identifica id da mensagem
-            msg_id=(content['data']['id'])
+            #msg_id=(content['data']['id'])
             # identifica dados da mensagem
-            webextalk=getwebexMsg(msg_id)
-            usermail=webextalk[2]
-            mensagem=webextalk[0]
-            sala=webextalk[1]
+            #webextalk=getwebexMsg(msg_id)
+            #usermail=webextalk[2]
+            #mensagem=webextalk[0]
+            #sala=webextalk[1]
 
             # executa a logica
-            msg,arquivo=logica(mensagem,usermail)
+            #msg,arquivo=logica(mensagem,usermail)
         
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,arquivo)
