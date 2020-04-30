@@ -181,21 +181,6 @@ def trataPOST(content):
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(salaparamandarmsg,msg,url,arquivo)
 
-        if content['name']==webhook_name and content['data']['personEmail']!=botmail:
-            # identifica id da mensagem
-            msg_id=(content['data']['id'])
-            # identifica dados da mensagem
-            webextalk=getwebexMsg(msg_id)
-            usermail=webextalk[2]
-            mensagem=webextalk[0]
-            sala=webextalk[1]
-
-            # executa a logica
-            msg,arquivo=logica(mensagem,usermail)
-        
-            # Envia resposta na sala apropriada
-            webexmsgRoomviaID(sala,msg,arquivo)
-
     except:
             print("POST nao reconhecido")
             pass
