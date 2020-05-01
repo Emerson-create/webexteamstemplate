@@ -1,6 +1,6 @@
 ﻿from config import *
 from funcoes import *
-from webexteams import getwebexMsg, webexmsgRoomviaID, getwebexRoomID
+from webexteams import getwebexMsg, webexmsgRoomviaID
 import json
 
 def logica(comando,usermail):
@@ -18,7 +18,7 @@ def logica(comando,usermail):
     comando = comando.lower()
     box=comando
 
-    while box == "oi" or box == "ola" or box == "hey" or box == "ei" or box == "alo" or box == "teste" or box =="Oi" or box == "Olá" or box == "help":
+    while box == "oi" or box == "ola" or box == "hey" or box == "ei" or box == "alo" or box == "teste" or box =="Oi" or box == "Olá":
         msg=""
         arquivo=""
         msg= "Olá Humano, antes de liberar o escoamento da água utilizada nos processos industriais, verifique comigo se o tanque especificado está pronto para voltar ao meio ambiente.\n" 
@@ -160,38 +160,25 @@ def logica(comando,usermail):
     #     msg=APICall(site,token)
         
 
-    return msg,arquivo
+    # return msg,arquivo
 
 
-#def trataPOST(content):
+def trataPOST(content):
 
     # resposta as perguntas via webexteams
     # trata mensagem quando nao e' gerada pelo bot. Se nao e' bot, entao usuario
     try:     
-        #if (content['dashboardId']):
+        if content['name']==webhook_name and content['data']['personEmail']!=botmail:
             # identifica id da mensagem
-            #msg=(content['message'])
+            msg_id=(content['data']['id'])
             # identifica dados da mensagem
-            #url=(content['ruleUrl'])
-            #salaparamandarmsg=getwebexRoomID ("Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5")
-        
-            # executa a logica
-            #msg,arquivo=logica(mensagem,usermail)
-            
-            # Envia resposta na sala apropriada
-            #webexmsgRoomviaID(salaparamandarmsg,msg,url,arquivo)
-
-        #if content['name']==webhook_name and content['data']['personEmail']!=botmail:
-            # identifica id da mensagem
-            #msg_id=(content['data']['id'])
-            # identifica dados da mensagem
-            #webextalk=getwebexMsg(msg_id)
-            #usermail=webextalk[2]
-            #mensagem=webextalk[0]
-            #sala=webextalk[1]
+            webextalk=getwebexMsg(msg_id)
+            usermail=webextalk[2]
+            mensagem=webextalk[0]
+            sala=webextalk[1]
 
             # executa a logica
-            #msg,arquivo=logica(mensagem,usermail)
+            msg,arquivo=logica(mensagem,usermail)
         
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,arquivo)
