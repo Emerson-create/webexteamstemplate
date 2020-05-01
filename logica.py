@@ -35,7 +35,7 @@ def logica(comando,usermail):
         #condicional para temperatura da água
         if box2 == "1":
             loginRecords = dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg="a temperatura atual da água é de" (loginRecords) "graus."
+            msg=(loginRecords)
             return msg,arquivo
         elif box2 == "agua":
             msg="a temperatura atual da água é de xx graus."
