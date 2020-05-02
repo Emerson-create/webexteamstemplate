@@ -188,6 +188,9 @@ def trataPOST(content):
             url=(content['ruleUrl'])
             webexmsgRoomviaId(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
 
+            # executa a logica
+            msg,arquivo=logica(mensagem,usermail)
+            
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,url)
 
