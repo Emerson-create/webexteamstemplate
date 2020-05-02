@@ -183,11 +183,11 @@ def trataPOST(content):
             usermail=webextalk[2]
             mensagem=webextalk[0]
             sala=webextalk[1]
-	
-	 	if (content['dashboardId']):
-	        msg=(content['message'])
-	        url=(content['ruleUrl'])
-	        webexmsgRoomviaId(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
+
+            if (content['dashboardId']):
+	            msg=(content['message'])
+	            url=(content['ruleUrl'])
+	            webexmsgRoomviaId(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
 
             # executa a logica
             msg,arquivo=logica(mensagem,usermail)
