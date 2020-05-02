@@ -2,24 +2,23 @@
 from funcoes import *
 from webexteams import getwebexMsg, webexmsgRoomviaID
 import json
-from influxdb import InfluxDBClient
-
-dbClient = InfluxDBClient(host='192.168.15.5', port=8086, measurement='CoreTemperature', database='test', username='', password='', ssl=False, verify_ssl=False)
 
 def logica(comando,usermail):
 
     # faz a logica de entender o comando pedido e a devida resposta para o usuario
     # o parametro usermail e' utilizado para identificar o usuario que solicitou o comando
     # O usuario pode ser uzado como filtro para se executar ou negar o comando
+    #
     # Retorna mensagem para ser enviada para console ou Webex teams
     
     #Separa o comando por espacos
     #Primeiro item e'o comando em si, os demais sao parametros deste comando
+    #
     
     comando = comando.lower()
     box=comando
 
-    while box == "oi" or box == "ola" or box == "hey" or box == "ei" or box == "alo" or box == "teste" or box == "Oi" or box == "Olá" or box == "help" or box == "ajuda":
+    while box == "oi" or box == "ola" or box == "bot oi" or box == "hey" or box == "ei" or box == "alo" or box == "teste" or box =="Oi" or box == "Olá":
         msg=""
         arquivo=""
         msg= "Olá Humano, antes de liberar o escoamento da água utilizada nos processos industriais, verifique comigo se o tanque especificado está pronto para voltar ao meio ambiente.\n" 
@@ -34,8 +33,7 @@ def logica(comando,usermail):
         box2 = box
         #condicional para temperatura da água
         if box2 == "1":
-            loginRecords = dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg=(loginRecords)
+            msg="a temperatura atual da água é de xx graus."
             return msg,arquivo
         elif box2 == "agua":
             msg="a temperatura atual da água é de xx graus."
@@ -86,11 +84,90 @@ def logica(comando,usermail):
             msg: "A palavra que você digitou chegou perto de 'mensal', 'temperatura mensal', tente elas"
             return msg,arquivo
 
+        
+            
+
+
+
+    # sp=comando.split(" ")
+
+    # print(sp)
+    
+    # comando na variavel box, lower deixa em minusculo para normalizar
+    
+    # Para o caso de nenhum pedido coberto aqui
+    mais="\nEscreva 'mais' para saber suas opções"
+    
+    # 21.11.19
+    # variavel arquivo para o caso do bot devolver arquivos anexados
+    
+    # arquivo=""
+    
+    # msg=""
+	
+    # chamadas de acordo com os parametros
+
+    # Funcoes para todos
+    
+    # Uso da funcao "mais"
+
     print(comando)
     print(box)
 
+    if box == "oi":
+        
+        
+        if box == "1":
+            msg="dancing"
+
+    elif box == "ei":
+        msg= "Olá Humano, antes de liberar o escoamento da água utilizada nos processos industriais, verifique comigo se o tanque especificado está pronto para voltar ao meio ambiente.\n" 
+        msg=msg+ "Qual das seguintes opções deseja ?\n"   
+        msg=msg+ "(1) - Temperatura atual da água\n"  
+        msg=msg+ "(2) - Buscar histórico de temperatura semanal\n"
+        msg=msg+ "(3) - Buscar histórico de temperatura mensal\n"
+
+    elif box == "ola":
+        msg= "Olá Humano, antes de liberar o escoamento da água utilizada nos processos industriais, verifique comigo se o tanque especificado está pronto para voltar ao meio ambiente.\n" 
+        msg=msg+ "Qual das seguintes opções deseja ?\n"   
+        msg=msg+ "(1) - Temperatura atual da água\n"  
+        msg=msg+ "(2) - Buscar histórico de temperatura semanal\n"
+        msg=msg+ "(3) - Buscar histórico de temperatura mensal\n"
+
+    elif box == "alo":
+        msg= "Olá Humano, antes de liberar o escoamento da água utilizada nos processos industriais, verifique comigo se o tanque especificado está pronto para voltar ao meio ambiente.\n" 
+        msg=msg+ "Qual das seguintes opções deseja ?\n"   
+        msg=msg+ "(1) - Temperatura atual da água\n"  
+        msg=msg+ "(2) - Buscar histórico de temperatura semanal\n"
+        msg=msg+ "(3) - Buscar histórico de temperatura mensal\n"
+
+    elif box == "bot oi":
+        msg= "Olá Humano, antes de liberar o escoamento da água utilizada nos processos industriais, verifique comigo se o tanque especificado está pronto para voltar ao meio ambiente.\n" 
+        msg=msg+ "Qual das seguintes opções deseja ?\n"   
+        msg=msg+ "(1) - Temperatura atual da água\n"  
+        msg=msg+ "(2) - Buscar histórico de temperatura semanal\n"
+        msg=msg+ "(3) - Buscar histórico de temperatura mensal\n"
+	
     else:
         msg="Não entendi o que você quis dizer, por favor tente dizer 'oi' pra mim"
+
+
+    #  if len(sp)>2:
+    #             tema=sp[1]
+    #             msg=maissobre(tema)
+    #             print(sp)
+    
+        
+    # # Funcoes que usam outras APIs
+    # if len(sp)>1 and box=="api":
+    #     # URL
+    #     site="apitesteexample.com"
+    #     # Parametro de autorizacao
+    #     token="123456"
+    #     msg=APICall(site,token)
+        
+
+    return msg,arquivo
 
 
 def trataPOST(content):
