@@ -183,7 +183,7 @@ def trataPOST(content):
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,arquivo)
 
-        if content['dashboardId']==3 and content['ruleName']==Alarme de Temperatura da Agua:
+        if content['dashboardId']==3:
             msg=(content['message'])
             url=(content['ruleUrl'])
             webexmsgRoomviaId(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
