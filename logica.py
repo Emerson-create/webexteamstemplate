@@ -183,8 +183,6 @@ def trataPOST(content):
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,arquivo)
 
-            content = '{"dashboardId":3,"evalMatches":[],"message":"ALARME: A temperatura da agua excedeu o valor de 50C","orgId":1,"panelId":2,"ruleId":2,"ruleName":"Alarme de Temperatura da Agua","ruleUrl":"http://localhost:3000/d/G3rh4IqWz/coretemperature_graph?fullscreen\u0026edit\u0026tab=alert\u0026panelId=2\u0026orgId=1","state":"Alerting","tags":{"Valor":"Temperatura"},"title":"Alarme de Temperatura da Agua"}'
-            
             if (content['dashboardId']):
                 msg=(content['message'])
                 url=(content['ruleUrl'])
