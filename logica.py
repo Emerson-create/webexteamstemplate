@@ -198,6 +198,7 @@ def trataPOST(content):
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,url)
 
-    except:
+    except Exception e:
             print("POST nao reconhecido")
+            print(str(e))
             pass
