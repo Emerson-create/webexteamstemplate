@@ -165,7 +165,7 @@ def logica(comando,usermail):
 
 def trataPOST_grafana(content):
     try:
-        if content['dashboardId']==3:
+        if content['dashboardId']==1:
             msg=(content['message'])
             url=(content['ruleUrl'])
             webexmsgRoomviaId=(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
