@@ -165,7 +165,8 @@ def logica(comando,usermail):
 
 def trataPOST_grafana(content):
     try:
-        msg="teste"
+        #msg="teste"
+        msg=content["message"]
         arquivo=""
         sala="Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5"
 
