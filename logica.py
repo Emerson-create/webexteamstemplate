@@ -163,7 +163,29 @@ def logica(comando,usermail):
     # return msg,arquivo
 
 
-def trataPOST(content):
+def trataPOST_grafana(content):
+    try:
+        if content['dashboardId']==3:
+            msg=(content['message'])
+            url=(content['ruleUrl'])
+            webexmsgRoomviaId=(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
+            webextalk=getwebexMsg(msg_id)
+            usermail=webextalk[2]
+            mensagem=webextalk[0]
+            sala=webextalk[1]
+
+            # executa a logica
+            msg,arquivo=logica(mensagem,usermail)
+            
+            # Envia resposta na sala apropriada
+            webexmsgRoomviaID(sala,msg,url)
+
+    except Exception as e:
+            print("POST nao reconhecido")
+            print(str(e))
+            pass
+
+def trataPOST_user(content):
 
     # resposta as perguntas via webexteams
     # trata mensagem quando nao e' gerada pelo bot. Se nao e' bot, entao usuario
@@ -182,22 +204,7 @@ def trataPOST(content):
         
             # Envia resposta na sala apropriada
             webexmsgRoomviaID(sala,msg,arquivo)
-
-        if content['dashboardId']==3:
-            msg=(content['message'])
-            url=(content['ruleUrl'])
-            webexmsgRoomviaId=(Y2lzY29zcGFyazovL3VzL1JPT00vZGQ1MmFjMDItYjU5YS0zYzczLTk2NzktODJlYTgxYmIzNDA5,msg,url)
-            webextalk=getwebexMsg(msg_id)
-            usermail=webextalk[2]
-            mensagem=webextalk[0]
-            sala=webextalk[1]
-
-            # executa a logica
-            msg,arquivo=logica(mensagem,usermail)
             
-            # Envia resposta na sala apropriada
-            webexmsgRoomviaID(sala,msg,url)
-
     except Exception as e:
             print("POST nao reconhecido")
             print(str(e))

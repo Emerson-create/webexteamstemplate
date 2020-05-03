@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging
 import json 
 import os
-from logica import trataPOST
+from logica import trataPOST_user, trataPOST_grafana
 
 # http server
 class S(BaseHTTPRequestHandler):
@@ -30,11 +30,12 @@ class S(BaseHTTPRequestHandler):
         content=json.loads(post_data.decode('utf-8'))
 
         # chama funcao para tratar POST
-        trataPOST(content)
+        #trataPOST_user(content)
 
-
-    
-
+        if self.headers["User-Agent"] == "Grafana":
+            trataPOST_grafana(content)
+        else:
+            trataPOST_user(content)
 
 def run(server_class=HTTPServer, handler_class=S, port=int(os.getenv('PORT',8080))):
         #Esta funcao roda efetivamente o servidor Web
