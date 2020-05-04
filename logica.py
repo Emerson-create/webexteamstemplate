@@ -2,6 +2,7 @@
 from funcoes import *
 from webexteams import getwebexMsg, webexmsgRoomviaID
 import json
+from influxdb import InfluxDBClient
 
 def logica(comando,usermail):
 
@@ -31,20 +32,31 @@ def logica(comando,usermail):
         msg=""
         arquivo=""
         box2 = box
-        #condicional para temperatura da água
+        #condicional atual para temperatura da água - busca no InfluxDB
         if box2 == "1":
-            msg="a temperatura atual da água é de xx graus."
+            dbClient = InfluxDBClient(host="187.59.72.16", port=8086)
+            temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
+            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
             return msg,arquivo
         elif box2 == "agua":
-            msg="a temperatura atual da água é de xx graus."
+            dbClient = InfluxDBClient(host="187.59.72.16", port=8086)
+            temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
+            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
             return msg,arquivo
         elif box2 == "temperatura":
-            msg="a temperatura atual da água é de xx graus"
+            dbClient = InfluxDBClient(host="187.59.72.16", port=8086)
+            temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
+            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
+            return msg,arquivo
         elif box2 == "atual":
-            msg="a temperatura atual da água é de xx graus"
+            dbClient = InfluxDBClient(host="187.59.72.16", port=8086)
+            temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
+            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
             return msg,arquivo
         elif box2 == "temperatura atual":
-            msg="a temperatura atual da água é de xx graus"
+            dbClient = InfluxDBClient(host="187.59.72.16", port=8086)
+            temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
+            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
             return msg,arquivo
         #ajudinha antecedendo possíveis erros de digitação de temperatura atual 
         elif box2 == "atula":
