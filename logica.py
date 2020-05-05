@@ -34,7 +34,7 @@ def logica(comando,usermail):
         box2 = box
         #condicional atual para temperatura da água - busca no InfluxDB
         if box2 == "1":
-            dbClient = InfluxDBClient(host='187.59.72.16', port=8086)
+            dbClient = InfluxDBClient(host="177.132.147.20", port=8086)
             temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
             msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
             return msg,arquivo
