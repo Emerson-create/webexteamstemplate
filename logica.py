@@ -36,27 +36,27 @@ def logica(comando,usermail):
         if box2 == "1":
             dbClient = InfluxDBClient(host="191.177.186.32", port=8086)
             temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
+            msg="A temperatura atual da água é de XX graus. "
             return msg,arquivo
         elif box2 == "agua":
             #dbClient = InfluxDBClient(host="191.177.186.32", port=8086)
             #temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
+            msg="A temperatura atual da água é de XX graus. "
             return msg,arquivo
         elif box2 == "temperatura":
             #dbClient = InfluxDBClient(host="191.177.186.32", port=8086)
             #temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
+            msg="A temperatura atual da água é de XX graus. "
             return msg,arquivo
         elif box2 == "atual":
             #dbClient = InfluxDBClient(host="191.177.186.32", port=8086)
             #temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
+            msg="A temperatura atual da água é de XX graus. "
             return msg,arquivo
         elif box2 == "temperatura atual":
             #dbClient = InfluxDBClient(host="191.177.186.32", port=8086)
             #temperatura= dbClient.query('select last(*) from CoreTemperature', database='test')
-            msg="A temperatura atual da água é de "+str(temperatura)+" graus. "
+            msg="A temperatura atual da água é de XX graus. "
             return msg,arquivo
         #ajudinha antecedendo possíveis erros de digitação de temperatura atual 
         elif box2 == "atula":
